@@ -52,9 +52,13 @@ const navbar = async (props: Props) => {
 
                     <span className="inline-flex h-full w-full cursor-pointer items-center justify-center
                     rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                        {true ? 'Dashboard' : 'Get Started'}
+                        { // WIP: Wire up user
+                        true ? 'Dashboard' : 'Get Started'
+                        }
                     </span>
                     </button>
+                    { // WIP: Wire up user
+                    }
                 </Link>
                 <MenuIcon className="md:hidden"/>
             </aside>
