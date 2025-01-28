@@ -36,7 +36,7 @@ const MenuOptions = () => {
                                                 `group h-8 w-8 flex items-center justify-center 
                                                 scale-[1.5] rounded-lg p-[3px] cursor-pointer`,
                                                 {
-                                                    'dark:bg-[#006b24] bg-[#fff6e0]':
+                                                    'dark:bg-[#2F006B] bg-[#EEE0FF]':
                                                     pathName === menuItem.href,
                                                 }
                                             )}
@@ -47,6 +47,12 @@ const MenuOptions = () => {
                                         </Link>
                                     </li>
                                 </TooltipTrigger>
+                                <TooltipContent
+                                    side="right"
+                                    className="bg-black/10 backdrop-blur-xl text-white"
+                                >
+                                    <p>{menuItem.name}</p>
+                                </TooltipContent>
                             </Tooltip>
                         </ul>
                     ))}
