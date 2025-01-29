@@ -11,6 +11,7 @@ import { menuOptions } from '@/lib/constants';
 import clsx from 'clsx';
 import { Separator } from '../ui/separator';
 import { Database, GitBranch, LucideMousePointerClick } from 'lucide-react';
+import { ModeToggle } from '../global/mode-toggle';
 
 type props = {}
 
@@ -97,14 +98,13 @@ const MenuOptions = () => {
                         <Database
                             className="text-muted-foreground"
                             size={18}
-                        ></Database>
-                        <div className='border-l-2 border-muted-foreground/50 h-6 absolute 
-                        left-1/2 transform translate-x-[-50%] -bottom-[30px]'>
-                        </div>    
+                        ></Database>   
                     </div>
                 </div>
             </div>
-            <div className='flex items-center justify-center flex-col gap-8'></div>
+            <div className='flex items-center justify-center flex-col gap-8'>
+                <ModeToggle/>   
+            </div>
         </nav>
     </div>
 }
