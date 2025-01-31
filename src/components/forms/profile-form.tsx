@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form"
 import { z } from 'zod'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
+import { Button } from '../ui/button'
+import { Loader2 } from 'lucide-react'
 const ProfileForm = () => {
     const [isLoading, setIsLoading] = useState(false)
     const form = useForm<z.infer<typeof EditUserProfileSchema>>({
@@ -42,7 +44,7 @@ const ProfileForm = () => {
                     )}
                 />
                 <FormField
-                    disabled={isLoading}
+                    disabled={true}         //Email not allowed to update 
                     control={form.control}
                     name="email"
                     render={ ({ field }) => (
@@ -52,7 +54,7 @@ const ProfileForm = () => {
                             </FormLabel>
                             <FormControl>
                                 <Input
-                                    placeholder="Name"
+                                    placeholder="Email"
                                     {...field}
                                 /> 
                             </FormControl>
@@ -60,6 +62,19 @@ const ProfileForm = () => {
                         </FormItem>
                     )}
                 />
+                <Button
+                    type="submit"
+                    className="self-start hover:bg-[#2F006B] hover:text-white "
+                >
+                    {isLoading ? (
+                        <>
+                        <Loader2 className="h-4 w-4 animate-spin"/>
+                        Saving
+                        </>
+                    ) : (
+                        'Save User Settings'
+                    )}
+                </Button>
             </form>
         </Form>
     )
