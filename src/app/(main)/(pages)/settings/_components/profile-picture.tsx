@@ -1,3 +1,4 @@
+'use client'
 import { useRouter } from "next/navigation"
 import UploadCareButton from "./uploadcare-button"
 import { X } from "lucide-react"

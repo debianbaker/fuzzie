@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { MenuIcon } from 'lucide-react'
+import { UserButton } from '@clerk/nextjs'
 type Props = {}
 const navbar = async (props: Props) => {
     return ( 
@@ -60,6 +61,8 @@ const navbar = async (props: Props) => {
                     { // WIP: Wire up user
                     }
                 </Link>
+                <UserButton/>  
+                {/* for getting button from clerk for authenticated user */}
                 <MenuIcon className="md:hidden"/>
             </aside>
         </header>

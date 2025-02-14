@@ -1,6 +1,7 @@
 import { Search, Headphones, Book } from "lucide-react"
 import { Input } from "../ui/input"
 import { TooltipProvider, TooltipTrigger, TooltipContent, Tooltip } from "../ui/tooltip"
+import { UserButton } from "@clerk/nextjs"
 
 const InfoBar = () => {
     return <div>
@@ -33,6 +34,8 @@ const InfoBar = () => {
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
+            <UserButton/>
+
         </div>
     </div>
 }
