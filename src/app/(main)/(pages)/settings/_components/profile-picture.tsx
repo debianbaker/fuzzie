@@ -10,7 +10,7 @@ type Props = {
     onDelete?: any,
     onUpload?: any
 }
-const ProfilePicture = ({ userImage, onDelete, onUpload} : Props) => {
+const   ProfilePicture = ({ userImage, onDelete, onUpload} : Props) => {
     const router = useRouter()
     const onRemoveProfileImage = async () => {
         const response = await onDelete();
@@ -41,9 +41,9 @@ const ProfilePicture = ({ userImage, onDelete, onUpload} : Props) => {
                 </Button>
                 </>
             )
-                : null
+                : 
+            <UploadCareButton onUpload = {onUpload}/>
             }
-            <UploadCareButton/>
         </div>
     </div>
     )
