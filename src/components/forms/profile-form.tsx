@@ -1,28 +1,47 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { EditUserProfileSchema } from "@/lib/types"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from 'zod'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { Loader2 } from 'lucide-react'
-const ProfileForm = () => {
+
+type Props = {
+    user: any
+    onUpdate?:any
+}
+const ProfileForm = ({ user, onUpdate }: Props ) => {
+
     const [isLoading, setIsLoading] = useState(false)
     const form = useForm<z.infer<typeof EditUserProfileSchema>>({
         mode:'onChange',
         resolver: zodResolver(EditUserProfileSchema),
         defaultValues: {
-            name: "",
-            email: "",
+            name: user.name,
+            email: user.email,
         },
     })
+    
+    const handleSubmit = async (                 // takes values from the form fields
+        values: z.infer<typeof EditUserProfileSchema>
+    ) => {
+        setIsLoading(true)               // makes the form field disabled until update occurs.            
+        await onUpdate(values.name)     // updates name in the Db.
+        setIsLoading(false)
+    }
+
+    useEffect(() => {
+        form.reset({ name: user.name, email: user.email })
+    }, [user])
+
     return (
         <Form {...form}>
             <form
                 className="flex flex-col gap-6"
-                onSubmit={() => {}}
+                onSubmit={form.handleSubmit(handleSubmit)}  // on submit the fn. is called
             >
                 <FormField
                     disabled={isLoading}
