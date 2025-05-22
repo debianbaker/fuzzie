@@ -13,13 +13,15 @@ type ModalContextType = {
     setClose: () => void
 }
 
-export const ModalContext = createContext<ModalContextType>({
+export const ModalContext = createContext<ModalContextType>({     
     data: {},
     isOpen: false,
     setOpen: (modal: React.ReactNode, fetchData?: () => Promise<any>) => {},
     setClose: () => {},
 })
+//createContext creates the Context having the states - data and isOpen and functions - setOpen and setClose
 
+//ModalProvider wraps all the components in the layout.tsx of the root folder.
 const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [data, setData] = useState<ModalData>({})
@@ -53,13 +55,15 @@ const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
     return (
         <ModalContext.Provider value={{ data, setOpen, setClose, isOpen }}>
             {children}
-            {showingModal}
+            {showingModal}    
         </ModalContext.Provider>
     )
+    // It wraps the components so that they can use the states in the ModalContext
+    // showindModal renders the Drawer actually 
 }
 
 export const useModal = () => {
-    const context = useContext(ModalContext)
+    const context = useContext(ModalContext)      // consumes the context value where ModalContext is the Context
     if(!context){
         throw new Error('useModal must be use within the modal provider')
     }

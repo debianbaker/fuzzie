@@ -19,11 +19,12 @@ type Props = {
 }
 
 const CustomModal = ({ children, subheading, title, defaultOpen}: Props) => {
-    const { isOpen, setClose } = useModal()
+    const { isOpen, setClose } = useModal()      
     const handleClose = () => setClose()
 
     return (
-        <Drawer
+        // The actual component is the Drawer that has props to handle open and close
+        <Drawer                
             open={isOpen}
             onClose={handleClose}
         >
